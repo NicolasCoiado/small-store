@@ -1,0 +1,11 @@
+CREATE TABLE user_account (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    cpf VARCHAR(14) UNIQUE,
+    role INT NOT NULL CHECK (role IN (0, 1)),
+    company_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (company_id) REFERENCES company(id)
+);
