@@ -1,5 +1,5 @@
 CREATE TABLE sale (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     customer_id INTEGER,
     company_id INTEGER NOT NULL,
     sale_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

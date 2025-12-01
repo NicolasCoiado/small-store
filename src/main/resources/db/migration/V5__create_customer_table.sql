@@ -1,5 +1,5 @@
 CREATE TABLE customer (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     email VARCHAR(150),
     cpf VARCHAR(14),
