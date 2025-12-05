@@ -2,6 +2,8 @@ package dev.nvnk.SmallStore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,6 +37,7 @@ public class Sale {
     private BigDecimal totalValue = BigDecimal.ZERO;
 
     @Column(name = "created_at", updatable = false, insertable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)

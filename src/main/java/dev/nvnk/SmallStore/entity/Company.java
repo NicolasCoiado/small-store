@@ -2,6 +2,7 @@ package dev.nvnk.SmallStore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -29,5 +30,6 @@ public class Company {
     private Address address;
 
     @Column(name = "created_at", updatable = false, insertable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }

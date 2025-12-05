@@ -13,11 +13,11 @@ import lombok.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(nullable = false)
     private String cep;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, columnDefinition = "states")
+    @Column(nullable = false)
     private States state;
     @Column(nullable = false)
     private String city;
