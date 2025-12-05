@@ -1,10 +1,10 @@
 CREATE TABLE user_account (
-    id INT PRIMARY KEY,
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(200) NOT NULL,
     cpf VARCHAR(14) UNIQUE,
-    role INT NOT NULL CHECK (role IN (0, 1)),
+    role INT NOT NULL CHECK (role IN (0, 1, 2)),
     company_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (company_id) REFERENCES company(id)
