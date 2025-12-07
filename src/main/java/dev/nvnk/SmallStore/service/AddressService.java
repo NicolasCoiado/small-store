@@ -21,10 +21,22 @@ public class AddressService {
         return addressMapper.toResponse(saved);
     }
 
-    public AddressResponse findByCompany (Long id) {
+    public AddressResponse findById (Long id) {
         Address address = addressRepository.findById(id)
                 .orElseThrow(() -> new AddressNotFoundException("Address not found."));
         return addressMapper.toResponse(address);
+    }
+
+    public AddressResponse replaceAddress (Long id, AddressRequest request){
+        addressRepository.findById(id).orElseThrow(() -> new AddressNotFoundException("Address not found."));
+        Address entity = addressMapper.toEntity(request);
+        entity.setId(id);
+        return addressMapper.toResponse(addressRepository.save(entity));
+    }
+
+    public void deleteAddress (Long id){
+        Address address = addressRepository.findById(id).orElseThrow(() -> new AddressNotFoundException("Address not found."));
+        addressRepository.delete(address);
     }
 
 }

@@ -25,15 +25,15 @@ public class AddressController {
 
         Map<String, Object> response = new HashMap<>();
 
-        response.put("Message: ", "Address saved successfully.");
-        response.put("Address: ", addressSaved);
+        response.put("Message", "Address saved successfully.");
+        response.put("Address", addressSaved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> findAddressByCompany(@PathVariable Long id){
-        AddressResponse address = addressService.findByCompany(id);
+    public ResponseEntity<Map<String, Object>> findAddressById(@PathVariable Long id){
+        AddressResponse address = addressService.findById(id);
 
         Map<String, Object> response = new HashMap<>();
 
@@ -42,6 +42,14 @@ public class AddressController {
         return ResponseEntity.ok(response);
     }
 
-    // Edit and delete address
+    @PutMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> replaceAddress(@PathVariable Long id, @Valid @RequestBody AddressRequest request){
+        AddressResponse address = addressService.replaceAddress(id, request);
+        Map<String, Object> response = new HashMap<>();
 
+        response.put("Message","Address successfully replaced.");
+        response.put("Address", address);
+
+        return ResponseEntity.ok(response);
+    }
 }
