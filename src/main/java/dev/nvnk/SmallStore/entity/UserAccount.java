@@ -35,7 +35,7 @@ public class UserAccount implements UserDetails {
     @Column(unique = true, length = 14)
     private String cpf;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private UserRole role;
 
