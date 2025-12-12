@@ -5,7 +5,7 @@ CREATE TABLE user_account (
     password VARCHAR(200) NOT NULL,
     cpf VARCHAR(14) UNIQUE,
     role INT NOT NULL CHECK (role IN (0, 1, 2)),
-    company_id INT NOT NULL,
+    company_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (company_id) REFERENCES company(id)
 );

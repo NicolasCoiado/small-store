@@ -40,7 +40,7 @@ public class UserAccount implements UserDetails {
     private UserRole role;
 
     @ManyToOne
-    @JoinColumn(name = "company_id", nullable = false)
+    @JoinColumn(name = "company_id")
     private Company company;
 
     @Column(name = "created_at", updatable = false, insertable = false)
