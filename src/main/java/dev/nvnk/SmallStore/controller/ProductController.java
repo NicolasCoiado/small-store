@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/product")
 @RequiredArgsConstructor
 public class ProductController {
 
@@ -28,4 +28,15 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> findProductById (@PathVariable Long id){
+        ProductResponse productResponse = service.findProductById(id);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("Product", productResponse);
+
+        return ResponseEntity.ok(response);
+    }
+
 }
